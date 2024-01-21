@@ -29,7 +29,7 @@ import java.util.Arrays;
 public class MainActivity extends Activity implements TextureView.SurfaceTextureListener {
     private final static String TAG = MainActivity.class.getSimpleName();
     TextureView mTexture;
-    CameraManager cameraManagerr;
+    CameraManager cameramanger;
     CameraDevice mCameraDevice;
     Handler mainHandler;
     CaptureRequest.Builder captureRequestBuilder;
@@ -93,7 +93,7 @@ public class MainActivity extends Activity implements TextureView.SurfaceTexture
     }
 
     public void init() {
-        cameraManagerr = (CameraManager) getSystemService(CAMERA_SERVICE);
+        cameramanger = (CameraManager) getSystemService(CAMERA_SERVICE);
         mainHandler = new Handler(getMainLooper());
         mImageReader = ImageReader.newInstance(mTexture.getWidth(), mTexture.getHeight(), ImageFormat.JPEG, 2);
         mImageReader.setOnImageAvailableListener(new ImageReader.OnImageAvailableListener() {
@@ -115,7 +115,7 @@ public class MainActivity extends Activity implements TextureView.SurfaceTexture
             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
                 return;
             }
-            cameraManagerr.openCamera(String.valueOf(0), new CameraDevice.StateCallback() {
+            cameramanger.openCamera(String.valueOf(0), new CameraDevice.StateCallback() {
                 @Override
                 public void onOpened(@NonNull CameraDevice cameraDevice) {
                     mCameraDevice = cameraDevice;
